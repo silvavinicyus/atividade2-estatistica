@@ -11,7 +11,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import random
 from itertools import chain
-from math import sqrt
+from math import factorial
 
 def dadosSorteio():
     i = 0
@@ -33,6 +33,7 @@ def dadosSorteio():
     return dicResults
 
 def amostragemAleatoria():
+    print('\nAMOSTRAGEM ALEATÒRIA: \n')
     dados = dadosSorteio()
     total = len(dadosSorteio())
     sorteios_selecionados = []
@@ -57,6 +58,7 @@ def amostragemAleatoria():
     print("Comentário:\nÉh possível perceber então que a variável foi ", round((field/100), 2)*100, "% das vezes em 'field', enquanto que foi ", round((bat/100), 2)*100, "% em 'bat'")
 
 def amostragemEstratificada():
+    print('\nAMOSTRAGEM ESTRATIFICADA: \n')
     dados = dadosSorteio()
     total = len(dados)
     
@@ -104,6 +106,7 @@ def amostragemEstratificada():
     print("Comentário:\nÉh possível perceber então que a variável foi ", round((field/70), 2)*100, "% das vezes em 'field', enquanto que foi ", round((bat/70), 2)*100, "% em 'bat'")
 
 def amostragemSistematica():
+    print('\nAMOSTRAGEM SISTEMÁTICA: \n')
     dados = dadosSorteio()
     total = len(dados)    
 
@@ -125,15 +128,40 @@ def amostragemSistematica():
     print("Comentário:\nÉh possível perceber então que a variável foi ", round((field/totalaux), 2)*100, "% das vezes em 'field', enquanto que foi ", round((bat/totalaux), 2)*100, "% em 'bat'")
 
 def calcBernoulli():
+    print('\nDISTRIBUIÇÃO DE BERNOULLI: \n')
     print('Comentários:\n')
     print('p: O resultado para p é de 0.5 ou 50%, pois como é um sorteio então field[1] ou bat[0] tem ambos 50% de chance de serem sorteados')
     print('q: Como a chance de p é de 0.5 ou 50*, então a chance de q é 1 - p, ou seja, também é de 0.5 ou 50%')
     print('Desvio padrão: O (desvio padrão)² é p*q: ', 0.5*0.5)
 
 
+def probabilidadeBinomial(x,n,p,q):
+  return (factorial(n)/(factorial(n-x)*factorial(x)))*(p**x)*(q**(n-x))
+
+
+def distribuicaoBinomial():
+    print('\nDISTRIBUIÇÃO BINOMIAL: \n')
+    p = 0.5
+    q = 0.5
+    n = 4
+    probabilidade = []
+    
+
+    print('As probabilidades são: ')
+    for x in range (4):
+        px = probabilidadeBinomial(x, n, p, q)
+        print('P(', x, ')= ', px)
+        probabilidade.append(px)
+    
+    print(round(np.sum(probabilidade)))
+
+    print('Temos como média: n*p  =  ', n*p, '    e variância: n * p * q =  ', n*p*q)
+    
 
 
 # amostragemAleatoria()
 # amostragemEstratificada()
 # amostragemSistematica()
-calcBernoulli()
+# calcBernoulli()
+
+distribuicaoBinomial()
