@@ -159,9 +159,9 @@ def distribuicaoBinomial():
     
 
 
-# amostragemAleatoria()
-# amostragemEstratificada()
-# amostragemSistematica()
-# calcBernoulli()
+amostragemAleatoria()
+amostragemEstratificada()
+amostragemSistematica()
+calcBernoulli()
 
 distribuicaoBinomial()
